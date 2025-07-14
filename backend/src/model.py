@@ -38,8 +38,6 @@ Answer:
     input_variables=['context', 'question']
 )
 
-
-
 template = PromptTemplate(
     template='Give me video id from this url {url} \n {format_instruction}',
     input_variables=['url'],
