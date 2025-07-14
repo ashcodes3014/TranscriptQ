@@ -24,6 +24,10 @@ class GetID(BaseModel):
 @app.post("/query")
 async def chat_with_ai(data: UserInput): 
     return AskDoubt(video_id=data.video_id, query=data.query)
+    
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
 
 @app.post("/getId")
 async def get_video_id(data: GetID):  
