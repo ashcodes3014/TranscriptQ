@@ -10,12 +10,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-embeddings = HuggingFaceEmbeddings(
-    model_name="all-MiniLM-L6-v2",
-    model_kwargs={'device': 'cpu'}
-)
-splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
-llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.2 ,max_tokens=512)
+embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.2)
 parser = StrOutputParser()
 parser2 = JsonOutputParser()
 
@@ -37,6 +34,8 @@ Answer:
 """,
     input_variables=['context', 'question']
 )
+
+
 
 template = PromptTemplate(
     template='Give me video id from this url {url} \n {format_instruction}',
@@ -84,8 +83,3 @@ def AskDoubt(video_id,query):
   })
   main_chain = parallel_chain | prompt | llm | parser
   return main_chain.invoke(query)
-
-
-
-
-
