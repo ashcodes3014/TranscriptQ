@@ -10,9 +10,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+embeddings = HuggingFaceEmbeddings(
+    model_name="all-MiniLM-L6-v2",
+    model_kwargs={'device': 'cpu'}
+)
 splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.2)
+llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.2 ,max_tokens=512)
 parser = StrOutputParser()
 parser2 = JsonOutputParser()
 
