@@ -11,7 +11,9 @@ langchain-openai==0.3.27
 langchain-huggingface==0.3.0
 
 faiss-cpu
-openai
+
 huggingface-hub
 sentence-transformers
 transformers
+
+openai
