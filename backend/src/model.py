@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-MiniLM-L3-v2")
 splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.2)
 parser = StrOutputParser()
