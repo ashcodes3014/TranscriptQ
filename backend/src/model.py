@@ -10,18 +10,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def get_embeddings():
-    return HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-MiniLM-L3-v2")
-
-def get_splitter():
-    return RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-
-def get_llm():
-    return ChatOpenAI(model="gpt-4o-mini", temperature=0.2)
-
-embeddings = get_embeddings()
-splitter = get_splitter()
-llm = get_llm()
+embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-MiniLM-L3-v2")
+splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.2)
 
 parser = StrOutputParser()
 parser2 = JsonOutputParser()
